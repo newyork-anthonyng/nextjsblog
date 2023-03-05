@@ -1,0 +1,10 @@
+on:
+	deployment_status:
+
+	run-e2es:
+		if: github.event_name == 'deployment_status' && github.event_name.state == 'success'
+		runs-on: ubuntu-latest
+		steps:
+			- uses: actions/checkout@v2
+			- name: Install dependencies
+				run: npm ci
